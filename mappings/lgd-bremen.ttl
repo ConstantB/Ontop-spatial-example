@@ -1,0 +1,294 @@
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, geom from buildings"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:datatype  <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                           rr:template  "{geom}" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#asWKT>
+                         ] ;
+  rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, type, population ,geom from places"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:column    "population" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#hasPopulation>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:column    "name" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasName>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{type}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#amenityType>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:datatype  <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                           rr:template  "{geom}" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#asWKT>
+                         ] ;
+  rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, type, width ,geom, name from waterways"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:column    "width" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#width>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:column    "name" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasName>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:datatype  <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                           rr:template  "{geom}" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#asWKT>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{type}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#waterwayCategory>
+                         ] ;
+  rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, type, oneway ,geom, name from roads"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{type}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#roadType>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:column    "name" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasName>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:column    "oneway" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#oneway>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:datatype  <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                           rr:template  "{geom}" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#asWKT>
+                         ] ;
+  rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, type, geom, name from landuse"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:datatype  <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                           rr:template  "{geom}" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#asWKT>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:column    "name" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasName>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{type}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#landUse>
+                         ] ;
+  rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, type, timestamp ,geom, name from points"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{type}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#pointType>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:datatype  <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                           rr:template  "{geom}" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#asWKT>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:column    "name" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasName>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:column    "timestamp" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasTimestamp>
+                         ] ;
+  rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, type, name from buildings"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:column    "name" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasName>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{type}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#buildingCategory>
+                         ] ;
+  rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, bridge, tunnel, maxspeed from roads"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:column    "tunnel" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#tunnel>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{bridge}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#bridge>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:column    "maxspeed" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#maxspeed>
+                         ] ;
+  rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
+
+[ a                      rr:TriplesMap ;
+  rr:logicalTable        [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select  gid, type, geom, name from railways"
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                           rr:template  "http://linkedgeodata.org/ontology#{type}" ;
+                                           rr:termType  rr:IRI
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#railwayType>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:column    "name" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://linkedgeodata.org/ontology#hasName>
+                         ] ;
+  rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                           rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                           rr:datatype  <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                           rr:template  "{geom}" ;
+                                           rr:termType  rr:Literal
+                                         ] ;
+                           rr:predicate  <http://www.opengis.net/ont/geosparql#asWKT>
+                         ] ;
+  rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:template  "http://linkedgeodata.org/ontology#{gid}" ;
+                           rr:termType  rr:IRI
+                         ]
+] .
